@@ -1,41 +1,40 @@
-var isAanagram = function (s, t) {
-    if (s.length !== t.length) {
-        return false;
+var isAnagram = function (s, t) {
+    if (s.length !== t.length) return false;
+
+    let frequency = {};
+
+    for (let c of s) {
+        frequency[c] = (frequency[c] || 0) + 1;
     }
-    let frequency = new Map();
-    for (const c of s) {
-        if (frequency.has(c)) {
-            frequency.set(c, frequency.get(c) + 1);
-        }
-        else {
-            frequency.set(c, 1);
-        }
+
+    for (let c of t) {
+        if (!frequency[c] || frequency[c] === 0) return false;
+        else frequency[c]--;
     }
-    for (const c of t) {
-        if (!frequency.get(c) || frequency.get(c) === 0) {
-            return false;
-        }
-        frequency.set(c, frequency.get(c) - 1);
-    }
+
     return true;
-}
+};
 
+// Test Case 1
 let s = "anagram";
-let t = "agranam";
-console.log(isAanagram(s, t));
-//expected output: true
+let t = "nagaram";
+let result = isAnagram(s, t);
+console.log("Expected: true, Output: " + result);
 
-let s2 = "rat";
-let t2 = "car";
-console.log(isAanagram(s2, t2));
-//expected output: false
+// Test Case 2
+s = "rat";
+t = "car";
+result = isAnagram(s, t);
+console.log("Expected: false, Output: " + result);
 
-let s3 = "";
-let t3 = "";
-console.log(isAanagram(s3, t3));
-//expected output: true
+// Test Case 3
+s = "";
+t = "";
+result = isAnagram(s, t);
+console.log("Expected: true, Output: " + result);
 
-let s4 = "a";
-let t4 = "b";
-console.log(isAanagram(s4, t4));
-//expected output: false
+// Test Case 4
+s = "a";
+t = "b";
+result = isAnagram(s, t);
+console.log("Expected: false, Output: " + result);
