@@ -1,15 +1,21 @@
 const stocks = [7, 1, 5, 3, 6, 4];
 
-function solution(stocks){
-    let profit = 0;
+function solution(stocks) {
     let min = stocks[0];
-
-    for(let i=1; i<stocks.length; i++){
-        min = Math.min(min, stocks[i]);
-        profit = Math.max(profit, stocks[i]-min);
-
+    let profit = 0;
+    let buy = 0;
+    let sell = 0;
+    for (let i = 1; i < stocks.length; i++) {
+        if (stocks[i] < min) {
+            buy = i;
+            min = stocks[i];
+        }
+        if (stocks[i] - min > profit) {
+            profit = stocks[i] - min;
+            sell = i;
+        }
     }
-    return profit;
-}
+    return [buy, sell];
+};
 
-console.log(solution(stocks))
+console.log(solution(stocks));
