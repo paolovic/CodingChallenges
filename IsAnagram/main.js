@@ -34,7 +34,7 @@ result = isAnagram(s, t);
 console.log("Expected: true, Output: " + result);
 
 // Test Case 4
-s = "a";
-t = "b";
+s = "aacc"
+t = "ccac"
 result = isAnagram(s, t);
 console.log("Expected: false, Output: " + result);
