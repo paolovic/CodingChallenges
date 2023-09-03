@@ -1,34 +1,16 @@
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        counter = len(s)
+        self.counter = 0
+        self.s = s
         for i in range(len(s)):
-            left = i
-            right = i
-            while self.isValidPalindrome(s[left : right + 1]):
-                counter += 1
-                if right+1 < len(s):
-                    right += 1
-                if left-1 > -1:
-                    left -= 1
-        return counter
+            left=i
+            right=i
+            self.isValidPalindrome(left, right)
+            self.isValidPalindrome(left, right+1)
+        return self.counter
 
-    def isValidPalindrome(self, s: str) -> bool:
-        left = 0
-        right = len(s) - 1
-        while left < right:
-            if s[left] != s[right]:
-                return False
-            left += 1
-            right -= 1
-        return True
-
-
-s = "abc"
-sol = Solution()
-print(sol.countSubstrings(s))  # 3
-
-s = "aaa"
-print(sol.countSubstrings(s))  # 6
-
-s = "abba"
-print(sol.countSubstrings(s))  # 6
+    def isValidPalindrome(self, left, right):
+        while left >=0 and right<len(self.s) and self.s[left]==self.s[right]:
+            self.counter+=1
+            left -= 1
+            right += 1
