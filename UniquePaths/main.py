@@ -1,6 +1,6 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        arr = [[0]*n]*m
+        arr = [[0]*n for _ in range(m)]
         arr[0] = [1]*n
         for i in range(m):
             arr[i][0] = 1
@@ -11,11 +11,11 @@ class Solution:
 
 
 s = Solution()
-print(s.uniquePaths(3, 3))
-print(s.uniquePaths(3, 7))
-print(s.uniquePaths(3, 2))
-print(s.uniquePaths(7, 3))
-print(s.uniquePaths(1, 1))
+print(s.uniquePaths(3, 3)) # 6
+print(s.uniquePaths(3, 7)) # 28
+print(s.uniquePaths(3, 2)) # 3
+print(s.uniquePaths(7, 3)) # 28
+print(s.uniquePaths(1, 1)) # 1
 
 
     
