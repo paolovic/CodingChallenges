@@ -14,7 +14,14 @@ class Solution:
             else:
                 self.adjacency[e[1]].append(e[0])
         self.visited = set()
-        return not self.checkCycle(0, -1)
+        if self.checkCycle(0, -1):
+            return False
+
+        for i in range(n):
+            if i not in self.visited:
+                return False
+
+        return True
 
     def checkCycle(self, node, parent):
         self.visited.add(node)
