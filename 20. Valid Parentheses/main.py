@@ -10,6 +10,8 @@ class Solution:
             if i == "(" or i == "[" or i == "{":
                 stack.append(i)
             else:
+                if len(stack) == 0:
+                    return False
                 prev = stack.pop()
                 if (
                     (i == ")" and prev != "(")
@@ -22,6 +24,9 @@ class Solution:
 
 s = Solution()
 # Test Case 1:
+s0 = "(){}}{" # Expected: False
+print(s.isValid(s0))
+
 s1 = "()" # Expected: True
 print(s.isValid(s1))
 
